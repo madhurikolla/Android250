@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>Food</item>
+        <item>Entertainment</item>
+        <item>Clothes</item>
+        <item>Kids</item>
+        <item>EatingOut</item>
+        <item>Shopping</item>
+        <item>Groceries</item>
+        <item>Gifts</item>
+        <item>Sports</item>
+        <item>Travel</item>
+        <item>AutoExpenses</item>
+        <item>ProfessionalExpenses</item>
+        <item>EducationalExpenses</item>
+        <item>Misc</item>
+    </string-array>
+</resources>

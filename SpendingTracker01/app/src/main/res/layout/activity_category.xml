@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kittumadhu.spendingtracker01.CategoryActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        />
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+       android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/my_toolbar"/>
+
+     <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+         android:text="food"
+         android:textSize="20sp"
+         android:paddingLeft="30dp"
+         android:paddingTop="5dp"
+         android:layout_alignParentEnd="true"
+         android:id="@+id/textview03"
+         android:layout_toEndOf="@+id/button"
+         android:layout_above="@+id/textView2"
+         android:layout_below="@+id/my_toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Date"
+        android:textSize="20sp"
+        android:id="@+id/textView01"
+        android:layout_below="@+id/textView"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        />
+
+        <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:hint="Select Date"
+        android:textSize="15sp"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+            android:id="@+id/textView2"
+            android:layout_alignEnd="@+id/textview03"
+            android:layout_alignStart="@+id/textview03"
+            android:layout_below="@+id/textView" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="20sp"
+        android:id="@+id/textView04"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/textView01" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter amount"
+        android:textSize="20sp"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/textView04"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/button"
+
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="107dp"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button2"
+        android:paddingRight="10dp"/>
+
+
+
+</RelativeLayout>
