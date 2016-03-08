@@ -54,6 +54,7 @@ public class PieChartActivity extends AppCompatActivity {
     private FrameLayout mainLayout;
     private PieChart mChart;
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -72,10 +73,23 @@ public class PieChartActivity extends AppCompatActivity {
 
                 Bundle b = new Bundle();
                 b.putStringArray("Category",xData);
-                b.putIntArray("Amount",yData);
+                b.putIntArray("Amount", yData);
+                b.putString("Description",desc);
 
                 myMainActivity.putExtras(b);
                 startActivity(myMainActivity);
+                return true;
+            case R.id.menu_transactions:
+
+                Intent myMainActivity01 = new Intent(this, TransactionLogActivity.class);
+
+                Bundle b1 = new Bundle();
+                b1.putStringArray("Category", xData);
+                b1.putIntArray("Amount", yData);
+                b1.putString("Description",desc);
+
+                myMainActivity01.putExtras(b1);
+                startActivity(myMainActivity01);
                 return true;
 
             default:
@@ -91,6 +105,9 @@ public class PieChartActivity extends AppCompatActivity {
             "Travel" };
 
     int[] yData = {0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0};
+    String FromDate;
+    String ToDate;
+    String desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,10 +124,9 @@ public class PieChartActivity extends AppCompatActivity {
         Bundle extras=getIntent().getExtras();
 
 
-            String FromDate=extras.getString("FromDate");
+        FromDate=extras.getString("FromDate");
 
-
-            String ToDate = extras.getString("ToDate");
+        ToDate = extras.getString("ToDate");
 
             ArrayList<String> Category = extras.getStringArrayList("Categories");
 
@@ -142,10 +158,12 @@ public class PieChartActivity extends AppCompatActivity {
 
                 String date = FromDate;
 
-                mChart.setDescription("Amount Spent on "+ date);
+                desc="Amount Spent on "+ date;
+                mChart.setDescription("Amount Spent On "+ date);
 
             }else {
-                mChart.setDescription("Amount Spent between " + FromDate + "and " + ToDate);
+                desc="Amount Spent between " + FromDate + "and " + ToDate;
+                mChart.setDescription("Amount Spent Between " + FromDate + "and " + ToDate);
             }
             // enable hole and configure
             mChart.setDrawHoleEnabled(true);

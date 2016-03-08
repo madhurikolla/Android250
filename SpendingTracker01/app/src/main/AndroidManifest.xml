@@ -59,9 +59,13 @@
             android:label="SpendingTracker"
             android:theme="@style/AppTheme" >
         </activity>
-
-        <activity android:name=".BarGraphActivity"
+        <activity
+            android:name=".BarGraphActivity"
             android:label="BarGraph"
+            android:parentActivityName=".ViewExpensesActivity" >
+        </activity>
+        <activity android:name=".TransactionLogActivity"
+            android:label="Transaction Details"
             android:parentActivityName=".ViewExpensesActivity">
         </activity>
     </application>

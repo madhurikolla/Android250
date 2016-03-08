@@ -1,7 +1,10 @@
 package com.example.kittumadhu.spendingtracker01;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PointF;
+import android.graphics.RectF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,15 +16,26 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
-public class BarGraphActivity extends AppCompatActivity {
+public class BarGraphActivity extends AppCompatActivity implements  OnChartValueSelectedListener  {
+
+
+    BarChart chart;
+    String[] Category;
+    int [] amount;
+    String desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +50,14 @@ public class BarGraphActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras=getIntent().getExtras();
-       String[] Category= extras.getStringArray("Category");
-        int [] amount=extras.getIntArray("Amount");
+        Category = extras.getStringArray("Category");
+        amount=extras.getIntArray("Amount");
+        desc=extras.getString("Description");
+
+        Log.d("Description" ,desc);
+
+
+
 
         for(int i=0;i<Category.length;i++){
             Log.d("Xdata",Category[i]);
@@ -58,30 +78,57 @@ public class BarGraphActivity extends AppCompatActivity {
             valueSet1.add(v1e1);
             j++;
         }
-        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "AmountSpent");
+
+        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Categories");
         barDataSet1.setColor(Color.rgb(0, 155, 0));
 
 
+        chart = (BarChart) findViewById(R.id.chart);
 
-        BarChart chart = (BarChart) findViewById(R.id.chart);
-
-//        BarData data = new BarData(getXAxisValues());
         BarData data01 = new BarData(category01, barDataSet1);
-
+        data01.setValueTextSize(10f);
+        data01.setHighlightEnabled(true);
         chart.setData(data01);
-        chart.setDescription("My Chart");
-        chart.animateXY(2000, 2000);
+        chart.setDescription(desc);
+        chart.animateXY(500,500);
 //        chart.setScrollY(chart.getHighestVisibleXIndex());
+        chart.setOnChartValueSelectedListener(this);
+
+        chart.setDrawValueAboveBar(true);
+       // chart.invalidate();
 
 
-
-        chart.invalidate();
-
+    //    chart.setOnChartValueSelectedListener(this);
 
     }
 
 
 
 
+    @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
+
+        if (e == null)
+            return;
+
+        Toast.makeText(BarGraphActivity.this,
+                Category[e.getXIndex()] + " = " + " $ " + e.getVal(), Toast.LENGTH_SHORT).show();
+
+//        RectF bounds = chart.getBarBounds((BarEntry) e);
+//        PointF position = chart.getPosition(e, YAxis.AxisDependency.LEFT);
+//
+//        Log.i("bounds", bounds.toString());
+//        Log.i("position", position.toString());
+//
+//        Log.i("x-index",
+//                "low: " + chart.getLowestVisibleXIndex() + ", high: "
+//                        + chart.getHighestVisibleXIndex());
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
+    }
 }
