@@ -1,11 +1,16 @@
 package com.example.kittumadhu.spendingtracker;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -119,7 +124,7 @@ public class PieChartActivity extends Activity {
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
                 // display msg when value selected
                 if (e == null)
-                    return;
+                        return;
 
                 Toast.makeText(PieChartActivity.this,
                         xData[e.getXIndex()] + " = " + " $ " + e.getVal() , Toast.LENGTH_SHORT).show();
@@ -140,6 +145,11 @@ public class PieChartActivity extends Activity {
         l.setXEntrySpace(7);
         l.setYEntrySpace(5);
     }
+
+
+
+
+
 
     private void addData() {
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();

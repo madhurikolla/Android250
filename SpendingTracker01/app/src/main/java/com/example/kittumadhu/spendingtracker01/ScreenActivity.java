@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class ScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

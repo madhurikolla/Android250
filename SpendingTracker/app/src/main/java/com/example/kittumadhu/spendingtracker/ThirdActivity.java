@@ -184,9 +184,8 @@ public class ThirdActivity extends AppCompatActivity {
                dialog.show();
 
             }else {
+
                Intent myMainActivity = new Intent(this, PieChartActivity.class);
-
-
                Bundle b = new Bundle();
                int total = dbExpensebyDate.get(0).getFood() + dbExpensebyDate.get(0).getTravel() + dbExpensebyDate.get(0).getShopping() +
                        dbExpensebyDate.get(0).getMisc();
@@ -197,7 +196,6 @@ public class ThirdActivity extends AppCompatActivity {
                b.putString("Misc", String.valueOf(dbExpensebyDate.get(0).getMisc()));
                b.putString("Total", String.valueOf(total));
                myMainActivity.putExtras(b);
-
                startActivity(myMainActivity);
 
            }
